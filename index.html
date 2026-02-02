@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>Moein Baghjari | توسعه دهنده وب</title>
+    <link rel="icon" type="image/png" href="title.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="moein | bjr">
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav-bar" id="navbar">
+        <div class="menu-btn" onclick="toggleMenu()">
+            <span id="l1" style="width: 100%;"></span>
+            <span id="l2" style="width: 65%;"></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="theme-switch" onclick="toggleTheme()"><div class="circle" id="themeIcon">☀️</div></div>
+            <b style="font-size: 1.3rem; color: var(--accent); letter-spacing: 1px;">MOEIN BAGHJARI</b>
+        </div>
+    </nav>
+
+    <div id="menu-layer">
+        <ul class="menu-links">
+            <li><a href="#" onclick="go('home')">صفحه اصلی</a></li>
+            <li><a href="#" onclick="go('order')">ثبت سفارش</a></li>
+            <li><a href="#" onclick="go('my-projects')">پروژه‌های من</a></li>
+            <li><a href="#" onclick="go('contact')">تماس با ما</a></li>
+            <a href="profile.html">ابزار ها</a>
+        </ul>
+    </div>
+
+    <div id="success-screen">
+        <div class="check-icon">✓</div>
+        <h2 style="font-weight: 900;">با موفقیت ثبت شد</h2>
+        <p style="opacity: 0.6; margin-top: 10px;">در حال بازگشت به صفحه اصلی...</p>
+    </div>
+
+    <div id="app">
+        <section id="home" class="section active" style="padding:0;">
+            <div class="hero">
+                <input type="hidden" name="form_type" value="order">
+                <div>
+                    <h1 class="hero-title">MOEIN<br><span>PROJECTS</span></h1>
+                    <p class="hero-sub">ایده‌های شما را به تجربه‌های دیجیتال تبدیل می‌کنم؛ طراحی و توسعه وب‌سایت‌های مدرن، سریع و هوشمند مطابق با آخرین استانداردهای روز.</p>
+                    <a href="#" onclick="go('order')" class="main-btn">شروع پروژه جدید</a>
+                    <br>
+                    <a href="Shopping.html" class="shop-btn">فروشگاه</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="order" class="section">
+            <h2 style="text-align: center; margin-bottom: 40px; font-weight: 900; font-size: clamp(1.8rem, 5vw, 2.5rem);">جزئیات سفارش پروژه</h2>
+            <div class="glass-card">
+                <form id="orderForm">
+                    <div class="order-grid">
+                        <div class="field-box"><label>شماره تماس</label><input type="tel" name="تلفن" class="modern-input" placeholder="09123456789" required></div>
+                        <div class="field-box"><label>آیدی تلگرام</label><input type="text" name="آیدی_تلگرام" class="modern-input" placeholder="@YourID"></div>
+                        <div class="field-box">
+                            <label>نوع سایت</label>
+                            <select name="نوع_سایت" class="modern-input">
+                                <option>فروشگاهی</option><option>شخصی / پورتفولیو</option><option>شرکتی</option><option>آموزشی</option>
+                            </select>
+                        </div>
+                        <div class="field-box">
+                            <label>بودجه تقریبی</label>
+                            <select name="بودجه" class="modern-input">
+                                <option>۳ تا ۷ میلیون</option><option>۷ تا ۱۵ میلیون</option><option>بالای ۱۵ میلیون</option>
+                            </select>
+                        </div>
+                        <div class="field-box full-w">
+                            <label>امکانات درخواستی</label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                                <label class="check-group"><input type="checkbox" name="امکانات[]" value="درگاه پرداخت"> درگاه پرداخت</label>
+                                <label class="check-group"><input type="checkbox" name="امکانات[]" value="چت آنلاین"> چت آنلاین</label>
+                                <label class="check-group"><input type="checkbox" name="امکانات[]" value="سئو پایه"> سئو پایه</label>
+                            </div>
+                        </div>
+                        <div class="field-box full-w"><label>توضیحات تکمیلی</label><textarea name="توضیحات" class="modern-input" rows="5" placeholder="در مورد پروژه خود کمی توضیح دهید..."></textarea></div>
+                    </div>
+                    <button type="submit" class="main-btn" style="width: 100%; margin-top: 20px;">ارسال و ثبت نهایی</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="my-projects" class="section">
+            <h2 style="text-align: center; margin-bottom: 40px; font-weight: 900; font-size: 2.5rem;">پروژه‌های من</h2>
+            <div id="projects-list" style="max-width: 800px; margin: 0 auto;"></div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 style="text-align: center; margin-bottom: 30px; font-weight: 900; font-size: 2.5rem;">ارتباط مستقیم</h2>
+            <div class="social-list">
+                <a href="https://www.instagram.com/moeinbaghjari.ir" target="_blank" class="social-item insta"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                <a href="https://t.me/moeinbaghjari" target="_blank" class="social-item tele"><svg viewBox="0 0 24 24"><path d="M11.944 0c-6.603 0-11.944 5.341-11.944 11.944 0 6.603 5.341 11.944 11.944 11.944 6.602 0 11.944-5.341 11.944-11.944 0-6.603 5.342-11.944-11.944-11.944zm5.856 7.803l-2.026 9.546c-.15.674-.55.841-1.115.524l-3.088-2.274-1.49 1.433c-.163.163-.3.3-.616.3l.221-3.142 5.719-5.166c.249-.221-.053-.344-.386-.122l-7.067 4.45-3.047-.952c-.663-.208-.676-.663.138-.981l11.915-4.591c.551-.201 1.033.127.858.9z"/></svg></a>
+            </div>
+            <div class="glass-card" style="max-width: 600px;">
+                <form id="contactForm">
+                    <input type="text" name="نام" class="modern-input" placeholder="نام شما" required>
+                    <input type="tel" name="شماره_تماس" class="modern-input" placeholder="شماره تماس شما" required>
+                    <textarea name="پیام" class="modern-input" rows="4" placeholder="چطور می‌توانم به شما کمک کنم؟" required></textarea>
+                    <button type="submit" class="main-btn" style="width: 100%; margin-top: 15px;">ارسال پیام</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div id="giftWrapper">
+        <div class="gift-trigger" onclick="openGift()" title="هدیه ویژه">
+             <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     fill="currentColor"
+     aria-label="Gift">
+  <path d="M9.375 3a1.875 1.875 0 0 0 0 3.75h1.875v4.5H3.375A1.875 1.875 0 0 1 1.5 9.375v-.75c0-1.036.84-1.875 1.875-1.875h3.193A3.375 3.375 0 0 1 12 2.753a3.375 3.375 0 0 1 5.432 3.997h3.943c1.035 0 1.875.84 1.875 1.875v.75c0 1.036-.84 1.875-1.875 1.875H12.75v-4.5h1.875a1.875 1.875 0 1 0-1.875-1.875V6.75h-1.5V4.875C11.25 3.839 10.41 3 9.375 3ZM11.25 12.75H3v6.75a2.25 2.25 0 0 0 2.25 2.25h6v-9ZM12.75 12.75v9h6.75a2.25 2.25 0 0 0 2.25-2.25v-6.75h-9Z"/>
+</svg>
+        </div>
+        
+    </div>
+
+    <div id="giftModal" class="gift-modal" onclick="closeGift(event)">
+        <div class="gift-box" onclick="event.stopPropagation()">
+            <div class="gift-slide active">
+                <img src="40vip.png" class="gift-img">
+                <div style="padding: 25px;">
+                    <h3 style="font-weight: 900;">تخفیف ویژه برای اولین سفارش شما🎉</h3>
+                    <p style="margin-top: 10px; opacity: 0.8; line-height: 1.6;">20% تخفیف واقعی برای اولین سفارش طراحی سایت شما.</p>
+                </div>
+            </div>
+            <div class="gift-slide">
+                <img src="30vip.png" class="gift-img">
+                <div style="padding: 25px;">
+                    <h3 style="font-weight: 900;">با فالو کردن پیج اینستاگرام ما 10% تخفیف دریافت کنید 📎</h3>
+                    <p style="margin-top: 10px; opacity: 0.8; line-height: 1.6;">پیج اینستاگرام و تلگرام ما در بخش تماس با ما قابل مشاهده است 📞</p>
+                </div>
+            </div>
+            <div class="gift-nav">
+                <div class="nav-arrow" onclick="moveGift(-1)">❮</div>
+                <span style="font-size: 14px; font-weight: bold; opacity: 0.5;">ورق بزنید</span>
+                <div class="nav-arrow" onclick="moveGift(1)">❯</div>
+            </div>
+            <button class="main-btn" style="width: 100%; border-radius: 0; background: #ff4757; box-shadow: none;" onclick="closeGift(null)">بستن</button>
+        </div>
+    </div>
+    <footer class="site-footer">
+
+  <div class="footer-grid">
+
+    <div class="footer-card">
+      <h3>درباره ما</h3>
+      <p>
+        طراحی و توسعه وب‌سایت‌های مدرن، سریع و امن  
+        با تمرکز روی تجربه کاربری، سئو و کدنویسی تمیز.
+      </p>
+    </div>
+
+    <div class="footer-card">
+      <h3>راه‌های ارتباطی</h3>
+
+      <div class="footer-item">
+        <svg viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.59a1 1 0 01-.25 1.01z"/>
+        </svg>
+        <span>09398525399</span>
+      </div>
+
+      <div class="footer-item">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        <span>bjrsupport@gmail.com</span>
+      </div>
+    </div>
+
+    <div class="footer-card">
+      <h3>دسترسی سریع</h3>
+      <a href="#" onclick="go('home')">صفحه اصلی</a>
+      <a href="#" onclick="go('order')">ثبت سفارش</a>
+      <a href="shop.html">فروشگاه</a>
+      <a href="profile.html">اموزش ها</a>
+      <a href="#" onclick="go('contact')">پشتیبانی</a>
+      <a href="profile.html">ابزار ها</a>
+    </div>
+
+    <div class="footer-card">
+      <h3>شبکه‌های اجتماعی</h3>
+
+      <div class="footer-socials">
+        <a href="https://t.me/moeinbaghjari" target="_blank" class="social-item tele"><svg viewBox="0 0 24 24"><path d="M11.944 0c-6.603 0-11.944 5.341-11.944 11.944 0 6.603 5.341 11.944 11.944 11.944 6.602 0 11.944-5.341 11.944-11.944 0-6.603 5.342-11.944-11.944-11.944zm5.856 7.803l-2.026 9.546c-.15.674-.55.841-1.115.524l-3.088-2.274-1.49 1.433c-.163.163-.3.3-.616.3l.221-3.142 5.719-5.166c.249-.221-.053-.344-.386-.122l-7.067 4.45-3.047-.952c-.663-.208-.676-.663.138-.981l11.915-4.591c.551-.201 1.033.127.858.9z"/></svg></a>
+     
+
+        <a href="https://www.instagram.com/moeinbaghjari.ir" target="_blank" class="social-item insta"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-copy">
+    © Moein Baghjari — All Rights Reserved
+  </div>
+
+</footer>
+    <script src="index.js"></script>
+</body>
+</html>
